@@ -9,5 +9,4 @@ public class OrderSentinelApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderSentinelApplication.class,args);
     }
-
 }
