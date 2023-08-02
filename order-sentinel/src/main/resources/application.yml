@@ -1,0 +1,9 @@
+server:
+  port: 8061
+spring:
+  application:
+    name: order-sentinel
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
