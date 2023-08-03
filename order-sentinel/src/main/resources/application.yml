@@ -7,3 +7,4 @@ spring:
     sentinel:
       transport:
         dashboard: 127.0.0.1:8080
+      web-context-unify: false  #默认将调用链路收敛，收敛的话会导致链路流控失效
