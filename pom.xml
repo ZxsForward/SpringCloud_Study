@@ -19,6 +19,7 @@
         <module>product-nacos</module><!--端口号：8023-->
         <module>config-nacos</module><!--端口号：8060-->
         <module>order-sentinel</module><!--端口号：8061-->
+        <module>order-openFeign-sentinel</module><!--端口号：8062-->
     </modules>
     <packaging>pom</packaging>
     <properties>

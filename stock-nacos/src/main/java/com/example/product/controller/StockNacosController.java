@@ -17,4 +17,10 @@ public class StockNacosController {
         System.out.println("扣减库存");
         return "扣减库存：" + port;
     }
+    @GetMapping("/reduct2")
+    public String reduct2(){
+        int a = 1/0;
+        System.out.println("扣减库存");
+        return "扣减库存：" + port;
+    }
 }

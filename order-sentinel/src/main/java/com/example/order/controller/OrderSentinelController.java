@@ -1,6 +1,5 @@
 package com.example.order.controller;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.order.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +21,9 @@ public class OrderSentinelController {
     }
 
     @GetMapping("flowThread")
-    @SentinelResource(value = "flowThread",blockHandler = "flowBlockHandler")
+//    @SentinelResource(value = "flowThread",blockHandler = "flowBlockHandler")
     public String flowThread() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         return "线程正常访问";
     }
 
