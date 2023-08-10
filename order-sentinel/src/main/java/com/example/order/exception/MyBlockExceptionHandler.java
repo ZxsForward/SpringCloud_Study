@@ -36,7 +36,7 @@ public class MyBlockExceptionHandler implements BlockExceptionHandler {
         } else if (e instanceof ParamFlowException) {
             result = Result.error("热点参数先溜了");
         } else if (e instanceof SystemBlockException) {
-            result = Result.error("触发保护规则了");
+            result = Result.error("触发系统保护规则了");
         } else if (e instanceof AuthorityException) {
             result = Result.error("授权规则不通过");
         }

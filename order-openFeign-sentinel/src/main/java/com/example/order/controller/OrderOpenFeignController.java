@@ -15,7 +15,7 @@ public class OrderOpenFeignController {
     @Autowired
     private StockFeignService stockFeignService;
 
-        @GetMapping("/add")
+    @GetMapping("/add")
     public String add(){
         System.out.println("下单成功");
         String s = stockFeignService.reduct2();
