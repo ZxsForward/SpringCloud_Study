@@ -13,17 +13,19 @@ spring:
 #        refresh-enabled: false     nacos客户端将无法感知配置的变化
 #         解决客户端循环打印ClientWorker日志：将public命名空间注释，或者配置成其他的命名空间
 #        修改命名空间读取不同命名空间的配置文件，除public外需要写命名空间ID才能生效
-        namespace: 1ccd6252-4a47-4a6e-992a-5545108ad79a
+        namespace: a34a299a-a36e-4c4d-8e09-6bfc3591b3ce
         group: zxs
 #        两种方式都可以使用下标和横杠表示读取多个配置文件
+#       默认group为DEFAULT_GROUP，上面设置的group对下面两种方式没影响
         extension-configs[0]:
           data-id: com.example.common03.properties
-          refresh: true
+          refresh: true #默认false
+#        group: 默认DEFAULT_GROUP
 
         shared-configs:
           - data-id: com.example.common.properties
-            refresh: true #默认false
-#            group: 默认DEFAULT_GROUP
+            refresh: true
+
           - data-id: com.example.common02.properties
             refresh: true
 # 配置文件的优先级（优先级大的会覆盖优先级小的，并且形成互补）
