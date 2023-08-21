@@ -7,15 +7,18 @@ spring:
   cloud:
     nacos:
       discovery:
-#        以下信息使用的都是默认值
 #        nacos服务地址
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.88.128:8848
 #        用户名
         username: nacos
 #        密码
         password: nacos
 #        命名空间
         namespace: public
+    sentinel:
+      transport:
+        dashboard: 192.168.88.128:8858 #sentinel服务地址
+      web-context-unify: false  #默认将调用链路收敛，收敛的话会导致链路流控失效
 feign:
   sentinel:
 #    openfeign整合sentinel

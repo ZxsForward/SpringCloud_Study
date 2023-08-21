@@ -18,7 +18,8 @@ public class OrderOpenFeignController {
     @GetMapping("/add")
     public String add(){
         System.out.println("下单成功");
-        String s = stockFeignService.reduct2();
-        return "Hello Feign，" + s;
+//        String s = stockFeignService.reduct2();
+//        return "Hello Feign，" + s;
+        return "Hello Feign";
     }
 }
