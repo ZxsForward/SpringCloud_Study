@@ -1,0 +1,35 @@
+#复杂方式，路由规则、断言、过滤器都写，更推荐采用这种方式，更加灵活，代码可读性高
+
+server:
+  port: 8064
+spring:
+  application:
+    name: gateway-nacos
+
+    #    gateway的配置，此种方式集成nacos
+  cloud:
+    gateway:
+      #路由规则
+      routes:
+        - id: order_route  #路由的唯一标识，路由到OrderNacos
+          uri: lb://order-service  #需要转发的地址，服务名
+          #lb：loadBalance，使用nacos中的本地均衡策略
+          #断言规则，用于路由的匹配
+          #当请求gateway的时候，使用断言对请求进行匹配，如果匹配成功就路由转发，失败就返回404
+          predicates:
+            - Path=/order-server/**
+            #访问http://localhost:8064/order-server/order/add 会路由到  ↓
+            #http://localhost:8020/order-server/order/add
+          filters:
+            - StripPrefix=1 #转发之前去掉第一层的路径，去掉之后就是http://localhost:8020/order/add
+
+#配置Nacos
+    nacos:
+      discovery:
+        server-addr: 192.168.88.128:8848
+        username: nacos
+        password: nacos
+
+
+
+

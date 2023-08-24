@@ -1,0 +1,23 @@
+server:
+  port: 8063
+spring:
+  application:
+    name: api-gateway
+
+    #    gateway的配置，此种方式还未集成nacos
+  cloud:
+    gateway:
+      #路由规则
+      routes:
+        - id: order_route  #路由的唯一标识，路由到OrderNacos
+          uri: http://localhost:8020 #需要转发的地址
+          #断言规则，用于路由的匹配
+          #当请求gateway的时候，使用断言对请求进行匹配，如果匹配成功就路由转发，失败就返回404
+          predicates:
+            - Path=/order-server/**
+            #访问http://localhost:8063/order-server/order/add 会路由到  ↓
+            #http://localhost:8020/order-server/order/add
+          filters:
+            - StripPrefix=1 #转发之前去掉第一层的路径，去掉之后就是http://localhost:8020/order/add
+
+

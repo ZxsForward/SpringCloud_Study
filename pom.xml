@@ -9,7 +9,7 @@
     <description>spring-cloud1</description>
     <modules>
 <!--        学习流程-->
-        <module>order</module> <!--端口号：8010-->
+        <module>order</module> <!--端口号：8010 -->
         <module>stock</module><!--端口号：8011-->
         <module>order-nacos</module><!--端口号：8020-->
         <module>stock-nacos</module><!--端口号：8021和8022-->
@@ -20,6 +20,8 @@
         <module>config-nacos</module><!--端口号：8060-->
         <module>order-sentinel</module><!--端口号：8061-->
         <module>order-openFeign-sentinel</module><!--端口号：8062-->
+        <module>gateway</module><!--端口号：8063-->
+        <module>gateway-nacos</module><!--端口号：8064-->
     </modules>
     <packaging>pom</packaging>
     <properties>
