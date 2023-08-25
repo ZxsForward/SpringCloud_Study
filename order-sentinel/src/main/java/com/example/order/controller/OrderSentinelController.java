@@ -49,6 +49,7 @@ public class OrderSentinelController {
         return "线程正常访问";
     }
 
+    //关联流控，访问/add 触发/get
     @GetMapping("/add")
     public String add(){
         return "生成订单" ;

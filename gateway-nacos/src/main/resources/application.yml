@@ -1,4 +1,6 @@
 #复杂方式，路由规则、断言、过滤器都写，更推荐采用这种方式，更加灵活，代码可读性高
+# 官方断言工厂网址：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+# 官方过滤器网址：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories
 
 server:
   port: 8064
@@ -20,16 +22,41 @@ spring:
             - Path=/order-server/**
             #访问http://localhost:8064/order-server/order/add 会路由到  ↓
             #http://localhost:8020/order-server/order/add
+#            - Before 在指定时间之前
+#            - After  在指定时间之后
+#            - Between 在两个指定时间之内
+#            - Cookie cookie中是否有某种参数
+#            - Header 请求头带有某种参数
+#            - Method 请求方法
+#            - Query 请求参数
+#            上面8种为内置断言工厂
+#           可在resources文件夹下的images文件夹中查看所有的内置断言工厂
+            - CheckAuth=zhangjie1 #这是自定义断言
           filters:
             - StripPrefix=1 #转发之前去掉第一层的路径，去掉之后就是http://localhost:8020/order/add
+            - AddRequestHeader=X-Request-red, blue
+            - CheckAuth=zhangjie2 #key,value  这里要获取参数所以采用url拼接方式请求，自定义过滤器
 
-#配置Nacos
+      #跨域
+      globalcors:
+        cors-configurations:
+          '[/**]': #允许跨域访问的资源
+            allowedOrigins: "https://docs.spring.io"  #跨域允许的来源
+            allowedMethods: #允许跨域访问的请求方式
+              - GET
+              - POST
+
+#         配置Nacos
     nacos:
       discovery:
         server-addr: 192.168.88.128:8848
         username: nacos
         password: nacos
-
+#        配置sentinel
+    sentinel:
+      transport:
+        dashboard: 192.168.88.128:8858
+      web-context-unify: false #默认将调用链路收敛，收敛的话会导致链路流控失效
 
 
 

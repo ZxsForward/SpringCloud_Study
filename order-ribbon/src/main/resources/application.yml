@@ -22,4 +22,5 @@ spring:
 
 stock-service:
   ribbon:
+    #指定使用Nacos提供的负载均衡策略，下面方式为权重负载均衡策略
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule

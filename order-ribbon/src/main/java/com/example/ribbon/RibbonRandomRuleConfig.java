@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 随机负载均衡策略
+ * 不能放在OrderRibbonApplication能扫描到的地方
+ * 否则此配置就会变为全局配置
  */
 @Configuration
 public class RibbonRandomRuleConfig {
