@@ -57,6 +57,11 @@ spring:
       transport:
         dashboard: 192.168.88.128:8858
       web-context-unify: false #默认将调用链路收敛，收敛的话会导致链路流控失效
+#      yml方式，当流控或者降级等发生时，自定义返回给前端的内容
+#      scg:
+#        fallback:
+#          mode: response
+#          response-body: "{code:' ',message:' '}"
 
 
 
