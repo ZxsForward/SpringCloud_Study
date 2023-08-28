@@ -9,7 +9,7 @@ spring:
         dashboard: 192.168.88.128:8858
       web-context-unify: false  #默认将调用链路收敛，收敛的话会导致链路流控失效
       datasource:
-        flow-rule: #这个flow-rule是可以自定义的
+        flow-rule: #这个flow-rule是可以自定义的，只是一个名字
           nacos:
             server-addr: 192.168.88.128:8848
             username: nacos

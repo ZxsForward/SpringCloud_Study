@@ -7,7 +7,6 @@ spring:
   cloud:
     nacos:
       discovery:
-#        以下信息使用的都是默认值
 #        nacos服务地址
         server-addr: 192.168.88.128:8848
 #        用户名
