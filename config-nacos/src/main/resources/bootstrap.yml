@@ -7,13 +7,13 @@ spring:
       config:
 #        Nacos客户端  默认识别文件扩展名为properties的默认配置文件
 #        一旦修改成了非properties格式，则必须通过file-extension进行设置
-#        file-extension、namespace、group都只针对默认的配置文件
+#        下面的file-extension、group都只针对默认的配置文件及其profile文件
 #        若想使用自定义的配置文件，则需要通过shared-configs和extension-configs进行配置
         file-extension: yaml
 #        refresh-enabled: false     nacos客户端将无法感知配置的变化
 #         解决客户端循环打印ClientWorker日志：将public命名空间注释，或者配置成其他的命名空间
 #        修改命名空间读取不同命名空间的配置文件，除public外需要写命名空间ID才能生效
-        namespace: a34a299a-a36e-4c4d-8e09-6bfc3591b3ce
+        namespace: a34a299a-a36e-4c4d-8e09-6bfc3591b3ce #对所有的配置文件都生效
         group: zxs
 #        两种方式都可以使用下标和横杠表示读取多个配置文件
 #       默认group为DEFAULT_GROUP，上面设置的group对下面两种方式没影响

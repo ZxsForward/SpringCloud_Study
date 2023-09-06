@@ -5,7 +5,7 @@ spring:
     active: dev
 #    在配置中心中，可以通过profile进行设置
 #    只有默认的配置文件才能结合profile进行使用
-#    对应的Data ID是  {服务名}-${profile}.{后缀名}
+#    对应的Data ID是  {服务名}-${profiles.active}.{后缀名}
 #    profile的后缀必须跟随默认配置文件的格式
 
   application:
