@@ -13,7 +13,7 @@ spring:
 #        refresh-enabled: false     nacos客户端将无法感知配置的变化
 #         解决客户端循环打印ClientWorker日志：将public命名空间注释，或者配置成其他的命名空间
 #        修改命名空间读取不同命名空间的配置文件，除public外需要写命名空间ID才能生效
-        namespace: a34a299a-a36e-4c4d-8e09-6bfc3591b3ce #对所有的配置文件都生效
+        namespace: 894b22ec-1a68-4d3f-adca-805bf548089f #对所有的配置文件都生效
         group: zxs
 #        两种方式都可以使用下标和横杠表示读取多个配置文件
 #       默认group为DEFAULT_GROUP，上面设置的group对下面两种方式没影响
