@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 //  这种方式可以指定某个服务的负载均衡策略，也可采用修改yml文件方式指定
 //        @RibbonClient(name = "stock-service",configuration = RibbonRandomRuleConfig.class)
 //})
+// Nacos自带负载均衡器ribbon
 public class OrderRibbonApplication {
 
     public static void main(String[] args) {
