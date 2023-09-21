@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/config")
-@RefreshScope
+@RefreshScope //Nacos自带动态刷新功能，但是要想在Controller等生效，需要加此注解
 public class ConfigNacosController {
 
     @Value("${user.name}")
