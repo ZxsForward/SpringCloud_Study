@@ -12,5 +12,6 @@ spring:
     # 会自动根据服务名拉取Data ID对应的配置文件
     # 如果Data ID与服务名不一致，就需要手动配置Data ID
     # 跟服务名相同的Data ID的配置文件，称之为默认的配置文件
-    # 除了默认的配置文件，其他的配置文件必须写上后缀
+    # 除了默认的配置文件，其他的配置文件的Data ID必须写上后缀名
+    # 并且必须与file-extension指定的后缀名一致
     name: com.example.config

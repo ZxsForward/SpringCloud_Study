@@ -4,14 +4,17 @@ spring:
       server-addr: 192.168.88.128:8848
       username: nacos
       password: nacos
+      discovery:
+        namespace: 894b22ec-1a68-4d3f-adca-805bf548089f
       config:
-#        Nacos客户端  默认识别文件扩展名为properties的默认配置文件
-#        一旦修改成了非properties格式，则必须通过file-extension进行设置
+#        Nacos客户端  默认识别默认配置文件
+#        非默认的配置文件，必须通过file-extension进行指定后缀名
 #        下面的file-extension、group都只针对默认的配置文件及其profile文件
 #        若想使用自定义的配置文件，则需要通过shared-configs和extension-configs进行配置
         file-extension: yaml
 #        refresh-enabled: false     nacos客户端将无法感知配置的变化
 #         解决客户端循环打印ClientWorker日志：将public命名空间注释，或者配置成其他的命名空间
+
 #        修改命名空间读取不同命名空间的配置文件，除public外需要写命名空间ID才能生效
         namespace: 894b22ec-1a68-4d3f-adca-805bf548089f #对所有的配置文件都生效
         group: zxs
@@ -29,4 +32,4 @@ spring:
           - data-id: com.example.common02.properties
             refresh: true
 # 配置文件的优先级（优先级大的会覆盖优先级小的，并且形成互补）
-# profile > 默认配置文件 > extension-configs(下标越大优先级越大) > shared-configs(下标越大优先级越大，即下面的优先级比上面的大)
+# profile > 默认配置文件 > extension-configs(下标越大优先级越大) > shared-configs(下标越大优先级越大，即下面的优先级比上面的大) > application/bootstrap
