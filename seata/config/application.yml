@@ -1,0 +1,78 @@
+# seata配置文件，这是虚拟机上seata的配置文件
+# docker安装 seata 链接
+# https://www.cnblogs.com/chihsien/p/16407337.html
+# https://blog.csdn.net/wyz0923/article/details/126163382
+server:
+  port: 7091
+
+spring:
+  application:
+    name: seata-server
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: ${user.home}/logs/seata
+  extend:
+    logstash-appender:
+      destination: 127.0.0.1:4560
+    kafka-appender:
+      bootstrap-servers: 127.0.0.1:9092
+      topic: logback_to_logstash
+
+console:
+  user:
+    username: seata
+    password: seata
+
+seata:
+  config:
+    # support: nacos, consul, apollo, zk, etcd3
+    type: nacos
+    nacos:
+      server-addr: 192.168.88.128:8848
+      namespace: seata
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      ##if use MSE Nacos with auth, mutex with username/password attribute
+      #access-key: ""
+      #secret-key: ""
+      data-id: seata.properties
+  registry:
+    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+    type: nacos
+    preferred-networks: 30.240.*
+    nacos:
+      application: seata-server
+      server-addr: 192.168.88.128:8848
+      group: SEATA_GROUP
+      namespace: seata
+      cluster: default
+      username: nacos
+      password: nacos
+  store:
+    # support: file 、 db 、 redis
+    mode: db
+    db:
+      datasource: druid
+      db-type: mysql
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.43.49:3306/seata?rewriteBatchedStatements=true
+      user: root
+      password: 123456
+      min-conn: 5
+      max-conn: 100
+      global-table: global_table
+      branch-table: branch_table
+      lock-table: lock_table
+      distributed-lock-table: distributed_lock
+      query-limit: 100
+      max-wait: 5000
+#  server:
+#    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
+  security:
+    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+    tokenValidityInMilliseconds: 1800000
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login

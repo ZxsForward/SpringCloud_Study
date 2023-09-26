@@ -1,0 +1,49 @@
+server:
+  port: 8065
+#  应用名称（nacos会将该名称当做服务名称）
+spring:
+  application:
+    name: order-seata
+  cloud:
+    nacos:
+      discovery:
+        #        nacos服务地址
+        server-addr: 192.168.88.128:8848
+        #        用户名
+        username: nacos
+        #        密码
+        password: nacos
+        #        命名空间
+        namespace: public
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: org.example.order.pojo
+
+seata:
+  tx-service-group: default-tx-group #配置事务分组
+  # 和 nacos 配置文件 service.vgroupMapping.default-tx-group=default 一致
+  # 上面的 default 要和 config 文件夹下面的 application.yml 中第48行 cluster: default 一致
+  registry:
+    #配置seata的注册中心，告诉seata client怎么去访问seata server
+    type: nacos
+    nacos:
+      server-addr: 192.168.88.128:8848
+      username: nacos
+      password: nacos
+      namespace: seata
+  config:
+    #配置seata的配置中心，读取关于seata client的一些配置
+    type: nacos
+    nacos:
+      server-addr: 192.168.88.128:8848
+      username: nacos
+      password: nacos
+      namespace: seata
+
