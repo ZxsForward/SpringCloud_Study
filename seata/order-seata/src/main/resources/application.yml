@@ -29,7 +29,7 @@ mybatis:
 seata:
   tx-service-group: default-tx-group #配置事务分组
   # 和 nacos 配置文件 service.vgroupMapping.default-tx-group=default 一致
-  # 上面的 default 要和 config 文件夹下面的 application.yml 中第48行 cluster: default 一致
+  # 上面的 default 要和 config 文件夹下面的 application.yml 中第51行 cluster: default 一致
   registry:
     #配置seata的注册中心，告诉seata client怎么去访问seata server
     type: nacos
