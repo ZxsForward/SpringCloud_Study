@@ -12,8 +12,10 @@ spring:
         flow-rule: #这个flow-rule是可以自定义的，只是一个名字
           nacos:
             server-addr: 192.168.88.128:8848
-            username: nacos
-            password: nacos
-            dataId: order-sentinel-flow-rule
+            group-id: SENTINEL_FLOW_GROUP
+            namespace: sentinelRules
+            dataId: ${spring.application.name}-flow-rule
             rule-type:  flow
+
+
 
