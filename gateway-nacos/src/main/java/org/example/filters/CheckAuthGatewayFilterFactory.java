@@ -45,7 +45,7 @@ public class CheckAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<
                         return exchange.getResponse().setComplete();
                     }
                 }
-                //没带值不做处理，也可以做处理，自定义，这里只要
+                //没带值不做处理，也可以做处理，自定义
                 return chain.filter(exchange);
             }
         };
