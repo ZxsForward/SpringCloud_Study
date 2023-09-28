@@ -21,7 +21,7 @@ spring:
           predicates:
             - Path=/order-server/**
             #访问http://localhost:8064/order-server/order/add 会路由到  ↓
-            #http://localhost:8020/order-server/order/add
+            #http://order-service/order-server/order/add
 #            - Before 在指定时间之前
 #            - After  在指定时间之后
 #            - Between 在两个指定时间之内
@@ -33,7 +33,7 @@ spring:
 #           可在resources文件夹下的images文件夹中查看所有的内置断言工厂
             - CheckAuth=zhangjie1 #这是自定义断言
           filters:
-            - StripPrefix=1 #转发之前去掉第一层的路径，去掉之后就是http://localhost:8020/order/add
+            - StripPrefix=1 #转发之前去掉第一层的路径，去掉之后就是http://order-service/order/add
             - AddRequestHeader=X-Request-red, blue
             - CheckAuth=zhangjie2 #key,value  这里要获取参数所以采用url拼接方式请求，自定义过滤器
 
