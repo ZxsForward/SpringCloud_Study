@@ -18,13 +18,14 @@ import java.util.List;
 @Component
 public class CheckAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<CheckAuthGatewayFilterFactory.Config> {
 
+    private static final String VALUE = "value"; //和内部类的属性一致
     public CheckAuthGatewayFilterFactory() {
         super(CheckAuthGatewayFilterFactory.Config.class);
     }
 
     @Override
     public List<String> shortcutFieldOrder() {
-        return Arrays.asList("value");
+        return Arrays.asList(VALUE);
     }
 
     @Override
@@ -36,21 +37,22 @@ public class CheckAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<
                 //2、如果!=value就失败
                 //3、否则正常访问
                 String name_value = exchange.getRequest().getQueryParams().getFirst("name");
+                System.out.println("获取的name参数为：" + name_value);
+
                 if (StringUtils.isNotBlank(name_value)){
                     if (config.getValue().equals(name_value)){
+                        System.out.println("获取的自定义过滤器value值为：" + config.getValue());
                         return chain.filter(exchange);
-                    }else {
-                        //返回404并结束
-                        exchange.getResponse().setStatusCode(HttpStatus.NOT_FOUND);
-                        return exchange.getResponse().setComplete();
                     }
                 }
-                //没带值不做处理，也可以做处理，自定义
-                return chain.filter(exchange);
+                //返回404并结束
+                exchange.getResponse().setStatusCode(HttpStatus.NOT_FOUND);
+                return exchange.getResponse().setComplete();
             }
         };
     }
 
+    //用于接收配置文件中 过滤器的信息
     public static class Config {
         private String value;
 

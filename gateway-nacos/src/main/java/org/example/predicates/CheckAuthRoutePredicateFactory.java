@@ -22,6 +22,7 @@ import java.util.function.Predicate;
 @Component
 public class CheckAuthRoutePredicateFactory extends AbstractRoutePredicateFactory<CheckAuthRoutePredicateFactory.Config> {
 
+    private static final String VALUE = "value"; //和内部类的属性一致
     public CheckAuthRoutePredicateFactory() {
         super(Config.class);
     }
@@ -29,7 +30,7 @@ public class CheckAuthRoutePredicateFactory extends AbstractRoutePredicateFactor
 
     @Override
     public List<String> shortcutFieldOrder() {
-        return Arrays.asList("name");
+        return Arrays.asList(VALUE);
     }
 
     @Override
@@ -37,7 +38,7 @@ public class CheckAuthRoutePredicateFactory extends AbstractRoutePredicateFactor
         return new GatewayPredicate() {
             @Override
             public boolean test(ServerWebExchange exchange) {
-                return config.getName().equals("zhangjie1");
+                return config.getValue().equals("myCheckAuthPredicate");
             }
         };
     }
@@ -45,14 +46,14 @@ public class CheckAuthRoutePredicateFactory extends AbstractRoutePredicateFactor
     //用于接收配置文件中 断言的信息
     @Validated
     public static class Config {
-        private String name;
+        private String value;
 
-        public String getName() {
-            return name;
+        public String getValue() {
+            return value;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setValue(String value) {
+            this.value = value;
         }
     }
 }

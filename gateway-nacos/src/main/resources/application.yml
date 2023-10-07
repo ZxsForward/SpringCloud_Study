@@ -31,11 +31,12 @@ spring:
 #            - Query 请求参数
 #            上面8种为内置断言工厂
 #           可在resources文件夹下的images文件夹中查看所有的内置断言工厂
-            - CheckAuth=zhangjie1 #这是自定义断言
+            - CheckAuth=myCheckAuthPredicate #这是自定义断言
           filters:
             - StripPrefix=1 #转发之前去掉第一层的路径，去掉之后就是http://order-service/order/add
             - AddRequestHeader=X-Request-red, blue
-            - CheckAuth=zhangjie2 #key,value  这里要获取参数所以采用url拼接方式请求，自定义过滤器
+            - CheckAuth=myCheckAuthFilter #key,value  这里要获取参数所以采用url拼接方式请求，自定义过滤器
+#           http://localhost:8064/order-server/order/add?name=myCheckAuthFilter
 
       #跨域
       globalcors:
