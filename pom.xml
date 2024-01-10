@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>springcloud1</artifactId>
+    <artifactId>springcloud-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud1</name>
-    <description>spring-cloud1</description>
+    <name>spring-cloud</name>
+    <description>spring-cloud</description>
     <modules>
 <!--        学习流程-->
         <module>order</module> <!--端口号：8010 -->
